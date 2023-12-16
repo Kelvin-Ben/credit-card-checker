@@ -66,7 +66,7 @@ const validateCred = (arr) => {
 };
 validateCred(valid1);
 
-const findInvalidCards = array => {
+const findInvalidCards = (array) => {
   /**
    * loop through a nested array
    * use validateCred function
@@ -74,13 +74,51 @@ const findInvalidCards = array => {
    * return invalid cards
    */
   let invalidcards = [];
-  for(let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     let currentCard = array[i];
-    if(!validateCred(currentCard)) {
+    if (!validateCred(currentCard)) {
       invalidcards.push(currentCard);
     }
   }
 
   return invalidcards;
-
-}
+};
+const invalidCardCompanies = (invalidcards) => {
+  /**
+   * define an empty variable to store companies
+   * loop through the array
+   * find first index of current array
+   * use conditional statement
+   */
+  let companies = [];
+  for (let i = 0; i < invalidcards.length; i++) {
+    let firstDigit = invalidcards[i][0];
+    // use switch
+    switch (firstDigit) {
+      case 3:
+        if (!companies.includes("Amex")) {
+          companies.push("Amex");
+        }
+        break;
+      case 4:
+        if (!companies.includes("Visa")) {
+          companies.push("Visa");
+        }
+        break;
+      case 5:
+        if (!companies.includes("Mastercard")) {
+          companies.push("mastercard");
+        }
+        break;
+      case 6:
+        if (!companies.includes("Discover")) {
+          companies.push("Discover");
+        }
+        break;
+      default:
+        return "Company not found!";
+        break;
+    }
+  }
+  return companies;
+};
