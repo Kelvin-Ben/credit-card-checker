@@ -65,3 +65,22 @@ const validateCred = (arr) => {
   return sum % 10 === 0;
 };
 validateCred(valid1);
+
+const findInvalidCards = array => {
+  /**
+   * loop through a nested array
+   * use validateCred function
+   * push invalid cards to an array
+   * return invalid cards
+   */
+  let invalidcards = [];
+  for(let i = 0; i < array.length; i++) {
+    let currentCard = array[i];
+    if(!validateCred(currentCard)) {
+      invalidcards.push(currentCard);
+    }
+  }
+
+  return invalidcards;
+
+}
